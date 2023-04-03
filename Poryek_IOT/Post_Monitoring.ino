@@ -1,15 +1,15 @@
-void Post_kondisiAir(){
+void Post_monitoring(){
   if((millis()- lastTime) > timerDelay ){
     // cek WiFi connection status
     if(WiFi.status()==WL_CONNECTED){
-      const char* serverName = "http://192.168.100.204/lelecuy/apiKondisiPakan.php";
+      const char* serverName = "http://192.168.54.125/lelecuy/apiMonitoring.php";
       WiFiClient client;
       HTTPClient http;  
       //memulai HTTP
       http.begin(client, serverName);
       http.addHeader("Content-Type", "application/x-www-form-urlencoded");
       // Data to send with HTTP POST
-      String httpRequestData = "pakan= "+ pakan;           
+      String httpRequestData = "pakan= "+ pakan + "&suhu="+ String(suhu)+ "&ph="+ String(ph);           
       // Send HTTP POST request
       int httpResponseCode = http.POST(httpRequestData);
       
@@ -20,10 +20,16 @@ void Post_kondisiAir(){
       // If you need an HTTP request with a content type: text/plain
       //http.addHeader("Content-Type", "text/plain");
       //int httpResponseCode = http.POST("Hello, World!");
-        Serial.println("========== Kondisi Pakan ==========");
-        Serial.println(httpRequestData);
+        Serial.println("========== Monitoring ==========");
+        Serial.print("PAKAN :");
+        Serial.println(pakan);
+        Serial.print("SUHU :");
+        Serial.println(suhu);
+        Serial.print("PH :");
+        Serial.println(ph);
         Serial.println("HTTP Response code: ");
         Serial.println(httpResponseCode);
+        Serial.println("================================");
        // free resources
        http.end();     
     }else{

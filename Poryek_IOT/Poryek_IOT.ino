@@ -4,15 +4,34 @@
 #include "time.h"
 #include <HTTPClient.h>
 #include <LiquidCrystal_I2C.h>
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+//Sensor Suhu Pin
+#define sensorSuhu_pin 27 
+
+OneWire oneWire(sensorSuhu_pin);
+DallasTemperature DS18B20(&oneWire); 
+
+float suhu;
+
+//Sensor PH pin
+const int potPin = A0;
+float ph;
+float value = 0;
 
 //ULTRASONIK DAN LCD
 // Ultrasonic Pin
 const int trigPin = 5;
 const int echoPin = 18;
 
+char buffer[16];
+
 // LCD row
 int lcdColumns = 16;
 int lcdRows = 2;
+
+
 
 long duration;
 float distanceCm;
@@ -39,12 +58,30 @@ Servo myservo;
 
 //variable untuk motor dan servo
 int pos =0;
-int jam ;
-int menit;
-int detik ;
-int lamaPakan;
-int kecepatan;
-int waktuPakan; 
+// Varialble Untuk yang 1
+int jam1 ;
+int menit1;
+int lamaPakan1;
+int kecepatan1;
+int waktuPakan1; 
+// Varialble Untuk yang 2
+int jam2;
+int menit2;
+int lamaPakan2;
+int kecepatan2;
+int waktuPakan2; 
+// Varialble Untuk yang 3
+int jam3;
+int menit3;
+int lamaPakan3;
+int kecepatan3;
+int waktuPakan3; 
+// Varialble Untuk yang 4
+int jam4 ;
+int menit4;
+int lamaPakan4;
+int kecepatan4;
+int waktuPakan4; 
 
 //Varible Waktu dan kondisi kasih pakan
 unsigned long startMillis;
@@ -52,8 +89,8 @@ unsigned long startMillis;
 bool isFeeding = false;
 
 //Wifi
-const char* ssid       = "IJDYH";
-const char* password   = "dindayusufhasan05";
+const char* ssid       = "Ghazi";
+const char* password   = "Sarimiisi8";
 
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 21600;
@@ -71,24 +108,34 @@ void printLocalTime()
 //Kondisi Pakan
 String pakan;
 unsigned long lastTime = 0;
-unsigned long timerDelay = 40000;
+unsigned long timerDelay = 20000;
 
 //Kondisi Air
-bool kondisiAir;
+bool isgoodPh = false;
+bool isgoodSuhu = false;
+bool kondisiAir = false;
 
 //isiasi fungsi
   void kondisiPakan();
   void kasihPakan();
-  void Post_kondisiPakan();
+  void sensorSuhu();
+  void sensorPH();
+  void Post_monitoring();
 
 void setup()
 {
   Serial.begin(115200);
+  //Suhu
+  DS18B20.begin();  // insiasi Suhu
+  //PH
+  pinMode(potPin, INPUT);
+  //Ulrasonik dan LCD 
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
   lcd.begin();
   lcd.backlight();
+  
   ledcSetup(Channel_15, freq,res) ; // setup PWM channel for BST L_PWM
   ledcSetup(Channel_14, freq,res) ; // setup PWM channel for BST R_PWM
   ledcAttachPin( BTS_LPwm , Channel_15) ; // Attach BST L_PWM
@@ -127,6 +174,12 @@ void loop()
     Serial.println(" CONNECTED"); 
   }
   kondisiPakan();
-  Post_kondisiPakan();
-//  kasihPakan();
+  sensorSuhu();
+  sensorPH();
+  if(isgoodPh && isgoodSuhu){
+    kondisiAir = true;
+    }
+  Post_monitoring();
+  kasihPakan();
+  lcd.clear();
 }
