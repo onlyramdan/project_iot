@@ -1,6 +1,6 @@
 void kasihPakan()
 {
-  String url = "http://192.168.222.125/lelecuy/apiKasihPakan.php";
+  String url = "http://192.168.229.125/lelecuy/apiKasihPakan.php";
   HTTPClient http;
   int httpCode;
   String response;
@@ -16,6 +16,7 @@ void kasihPakan()
   deserializeJson(doc,response);
   // #1
   JsonObject obj1 = doc["data"][0];
+  Serial.println(obj1);
  
   jam1 = obj1["jam"];
   menit1 = obj1["menit"];
@@ -25,6 +26,7 @@ void kasihPakan()
   waktuPakan1 = jam1*60*60 + menit1*60;
   // #2
   JsonObject obj2 = doc["data"][1];
+  Serial.println(obj2);
  
   jam2 = obj2["jam"];
   menit2 = obj2["menit"];
@@ -62,7 +64,7 @@ void kasihPakan()
     Serial.println("Failed to obtain time");
     return;
   }
-  if (waktuPakan1 == timeinfo.tm_hour * 60 * 60 + timeinfo.tm_min*60){
+  if (waktuPakan1 == timeinfo.tm_hour * 60 * 60 + timeinfo.tm_min*60 && kondisiAir){
       if(!isFeeding){
       Serial.println("========== Kondisi Makan =========="); 
       myservo.write(180);

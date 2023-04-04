@@ -1,21 +1,25 @@
-const int potPin = A0;
-float ph;
-float value = 0;
+float ph_step;
 
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(115200);
-  pinMode(potPin, INPUT);
-  delay(1000);
-}
+float ph4 = 3.11;
+float ph7 = 2.39;
+void setup() 
+{ 
+  Serial.begin(9600);
+  pinMode(potPin, INPUT); 
+} 
+ 
+void loop() 
+{ 
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  value = analogRead(potPin);
-  Serial.print(value);
-  Serial.print("| PH : ");
-  float voltage = value*(3.3/4095.0);
-  ph= (3.3*voltage);
+  value = analogRead(potPin); 
+  voltage = value * (3.3 / 4095.0); 
+  Serial.print("Voltage :"); 
+  Serial.println(voltage); 
+  ph_step = (ph4 - ph7)/3;
+  
+  ph = 7.00 + ((ph7-voltage)/ph_step);
+  Serial.print("PH : ");
   Serial.println(ph);
-  delay(500);
+  delay(500)
+
 }
