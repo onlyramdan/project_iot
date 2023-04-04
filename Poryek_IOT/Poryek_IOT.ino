@@ -17,8 +17,15 @@ float suhu;
 
 //Sensor PH pin
 const int potPin = A0;
+unsigned long int totalValue; 
+int buf[50],temp;
+float value; 
+float voltage;
 float ph;
-float value = 0;
+float ph_step;
+
+float ph4 = 3.11;
+float ph7 = 2.39;
 
 //ULTRASONIK DAN LCD
 // Ultrasonic Pin

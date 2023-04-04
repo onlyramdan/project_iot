@@ -1,6 +1,6 @@
 const int potPin = A0;
 unsigned long int totalValue; 
-int buf[40],temp;
+int buf[50],temp;
 float value; 
 float voltage;
 float ph;
@@ -16,14 +16,14 @@ void setup()
  
 void loop() 
 { 
-  for(int i=0;i<40;i++)
+  for(int i=0;i<50;i++)
   {
     buf[i] = analogRead(potPin);
     delay(10);
   }
-  for (int i=0;i<39;i++)
+  for (int i=0;i<49;i++)
   {
-    for(int j=i+1;j<40;j++)
+    for(int j=i+1;j<50;j++)
     {
       if(buf[i]>buf[j])
       {
@@ -34,11 +34,11 @@ void loop()
     }  
    }
    totalValue=0;
-   for (int i=2; i<38; i++ )
+   for (int i=2; i<48; i++ )
    {
     totalValue +=buf[i]; 
    }
-  value = totalValue/36;
+  value = totalValue/46;
   
   voltage = value * (3.3 / 4095.0); 
   Serial.print("Voltage: "); 
