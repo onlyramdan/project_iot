@@ -1,6 +1,6 @@
 void kasihPakan()
 {
-  String url = "http://192.168.229.125/lelecuy/apiKasihPakan.php";
+  String url = "http://192.168.232.125/lelecuy/apiKasihPakan.php";
   HTTPClient http;
   int httpCode;
   String response;
