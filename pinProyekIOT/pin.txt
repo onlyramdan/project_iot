@@ -1,0 +1,18 @@
+Sensor Pin
+==========
+Suhu
+- pin 27
+Ph
+- Pin Vp
+LCD
+- Pin SDA -> 21
+- SCL -> 22
+ULTRASONIK
+- Pin Trig ->  5
+- Pin echoPin -> 18 
+Servo
+- Pin 26
+Motor Driver
+- R_EN L_EN -> VCC
+- LPWM -> 4
+- RPW -> 2
