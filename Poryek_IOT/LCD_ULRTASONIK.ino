@@ -25,8 +25,7 @@ void kondisiPakan()
         pakan = "Hampir Habis";
         lcd.setCursor(0, 1);
         sprintf(buffer, "%s", pakan.c_str());     
-        lcd.print(buffer);
-        
+        lcd.print(buffer); 
     }
     else
     {

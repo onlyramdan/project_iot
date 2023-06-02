@@ -1,6 +1,6 @@
 void kasihPakan()
 {
-  String url = "http://192.168.232.125/lelecuy/apiKasihPakan.php";
+  String url = "http://192.168.255.125/lelecuy/apiKasihPakan.php";
   HTTPClient http;
   int httpCode;
   String response;
@@ -67,7 +67,7 @@ void kasihPakan()
   if (waktuPakan1 == timeinfo.tm_hour * 60 * 60 + timeinfo.tm_min*60 && kondisiAir){
       if(!isFeeding){
       Serial.println("========== Kondisi Makan =========="); 
-      myservo.write(180);
+      myservo.write(45);
       ledcWrite(Channel_14,kecepatan1);    
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Terbuka");
@@ -83,7 +83,7 @@ void kasihPakan()
   {
     if(!isFeeding){
       Serial.println("========== Kondisi Makan =========="); 
-      myservo.write(180);
+      myservo.write(45);
       ledcWrite(Channel_14,kecepatan2);    
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Terbuka");
@@ -99,7 +99,7 @@ void kasihPakan()
   {
     if(!isFeeding){
       Serial.println("========== Kondisi Makan =========="); 
-      myservo.write(180);
+      myservo.write(45);
       ledcWrite(Channel_14,kecepatan3);    
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Terbuka");
@@ -115,7 +115,7 @@ void kasihPakan()
   {
     if(!isFeeding){
       Serial.println("========== Kondisi Makan =========="); 
-      myservo.write(180);
+      myservo.write(45);
       ledcWrite(Channel_14,kecepatan4);    
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Terbuka");

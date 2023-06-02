@@ -1,14 +1,15 @@
 void Post_monitoring(){
   if((millis()- lastTime) > timerDelay ){
     // cek WiFi connection status
-    if(WiFi.status()==WL_CONNECTED){
-      const char* serverName = "http://192.168.232.125/lelecuy/apiMonitoring.php";
+    if(WiFi.status()== WL_CONNECTED){
+      const char* serverName = "http://192.168.255.125/lelecuy/apiMonitoring.php";
       WiFiClient client;
       HTTPClient http;  
       //memulai HTTP
       http.begin(client, serverName);
       http.addHeader("Content-Type", "application/x-www-form-urlencoded");
       // Data to send with HTTP POST
+      // Mengirim HTTP POST Data     
       String httpRequestData = "pakan= "+ pakan + "&suhu="+ String(suhu)+ "&ph="+ String(ph);           
       // Send HTTP POST request
       int httpResponseCode = http.POST(httpRequestData);

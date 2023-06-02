@@ -170,19 +170,16 @@ void setup()
 }
 void loop()
 {
-  if (WiFi.status() != WL_CONNECTED) {
+  if(WiFi.status() != WL_CONNECTED) {
     Serial.println("WiFi not connected");
     Serial.printf("Connecting to %s ", ssid);
     WiFi.begin(ssid, password);
-    while (WiFi.status() != WL_CONNECTED) {
-      delay(500);
-      Serial.print(".");
-      }
     Serial.println(" CONNECTED"); 
   }
   kondisiPakan();
   sensorSuhu();
   sensorPH();
+  // Fuzzy Logic
   if(isgoodPh && isgoodSuhu){
     kondisiAir = true;
     }

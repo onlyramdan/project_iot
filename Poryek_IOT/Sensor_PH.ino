@@ -35,5 +35,5 @@ void sensorPH(){
   //Kondisi 
   if (ph >= 6 && ph <= 8){  
     isgoodPh = true;
-    }
   }
+}
