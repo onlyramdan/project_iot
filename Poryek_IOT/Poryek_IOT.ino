@@ -16,16 +16,27 @@ DallasTemperature DS18B20(&oneWire);
 float suhu;
 
 //Sensor PH pin
-const int potPin = A0;
-unsigned long int totalValue; 
-int buf[50],temp;
-float value; 
-float voltage;
-float ph;
-float ph_step;
+//const int potPin = A0;
+//unsigned long int totalValue; 
+//int buf[50],temp;
+//float value; 
+//float voltage;
+//float ph;
+//float ph_step;
+//
+//float ph4 = 3.11;
+//float ph7 = 2.39;
 
-float ph4 = 3.11;
-float ph7 = 2.39;
+//yang baru 
+const int ph_Pin = A0;
+float ph = 0;
+float PH_step;
+int nilai_analog_PH;
+double TeganganPh;
+
+float PH4 = 3.30;
+float PH7 = 2.55;
+
 
 //ULTRASONIK DAN LCD
 // Ultrasonic Pin
@@ -135,13 +146,16 @@ void setup()
   //Suhu
   DS18B20.begin();  // insiasi Suhu
   //PH
-  pinMode(potPin, INPUT);
+  pinMode(ph_Pin, INPUT);
+  //pinMode(potPin, INPUT);
   //Ulrasonik dan LCD 
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
 
   lcd.begin();
   lcd.backlight();
+
+  myservo.write(90);
   
   ledcSetup(Channel_15, freq,res) ; // setup PWM channel for BST L_PWM
   ledcSetup(Channel_14, freq,res) ; // setup PWM channel for BST R_PWM
@@ -183,6 +197,7 @@ void loop()
   if(isgoodPh && isgoodSuhu){
     kondisiAir = true;
     }
+    
   Post_monitoring();
   kasihPakan();
   lcd.clear();

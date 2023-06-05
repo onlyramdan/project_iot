@@ -17,7 +17,7 @@ void setup() {
 }
 
 void loop() {
-   ledcWrite(Channel_14,100);    
+   ledcWrite(Channel_14,30);    
    ledcWrite(Channel_15,0);
 
 }

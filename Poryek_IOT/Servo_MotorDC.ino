@@ -1,6 +1,6 @@
 void kasihPakan()
 {
-  String url = "http://192.168.255.125/lelecuy/apiKasihPakan.php";
+  String url = "http://192.168.147.125/lelecuy/apiKasihPakan.php";
   HTTPClient http;
   int httpCode;
   String response;
@@ -72,7 +72,7 @@ void kasihPakan()
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Terbuka");
       delay(lamaPakan1);
-      myservo.write(0);
+      myservo.write(90);
       ledcWrite(Channel_14,0);    
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Tertutup");
@@ -88,7 +88,7 @@ void kasihPakan()
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Terbuka");
       delay(lamaPakan2);
-      myservo.write(0);
+      myservo.write(90);
       ledcWrite(Channel_14,0);    
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Tertutup");
@@ -104,7 +104,7 @@ void kasihPakan()
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Terbuka");
       delay(lamaPakan3);
-      myservo.write(0);
+      myservo.write(90);
       ledcWrite(Channel_14,0);    
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Tertutup");
@@ -120,7 +120,7 @@ void kasihPakan()
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Terbuka");
       delay(lamaPakan4);
-      myservo.write(0);
+      myservo.write(90);
       ledcWrite(Channel_14,0);    
       ledcWrite(Channel_15,0);
       Serial.println("Pakan Tertutup");

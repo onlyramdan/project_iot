@@ -2,7 +2,7 @@ void Post_monitoring(){
   if((millis()- lastTime) > timerDelay ){
     // cek WiFi connection status
     if(WiFi.status()== WL_CONNECTED){
-      const char* serverName = "http://192.168.255.125/lelecuy/apiMonitoring.php";
+      const char* serverName = "http://192.168.147.125/lelecuy/apiMonitoring.php";
       WiFiClient client;
       HTTPClient http;  
       //memulai HTTP

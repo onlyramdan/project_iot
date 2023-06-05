@@ -7,9 +7,9 @@ void setup() {
   Serial.begin(9600);
 }
 void loop() {
-  servo.write(0);
-  Serial.println("Buka Servo");
-  delay(5000);
   servo.write(90);
+  Serial.println("Buka Servo");
+  delay(1000);
+  servo.write(45);
   Serial.println("Tutup Servo");
 }
