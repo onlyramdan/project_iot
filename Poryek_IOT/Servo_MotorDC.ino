@@ -29,7 +29,6 @@ void kasihPakan()
   waktuPakan1 = jam1*60*60 + menit1*60;
   // #2
   JsonObject obj2 = doc["data"][1];
-  Serial.println(obj2);
  
   jam2 = obj2["jam"];
   menit2 = obj2["menit"];
@@ -79,7 +78,7 @@ void kasihPakan()
       ledcWrite(Channel_14,kecepatan1);    
       ledcWrite(Channel_15,0);
       for (int i = 0;i<1;i++){
-        myservo.write(65);
+        myservo.write(55);
         delay(lamaPakan1);
         myservo.write(90);
       }
@@ -99,7 +98,7 @@ void kasihPakan()
       ledcWrite(Channel_14,kecepatan2);    
       ledcWrite(Channel_15,0);
       for (int i = 0;i<1;i++){
-        myservo.write(65);
+        myservo.write(55);
         delay(lamaPakan2);
         myservo.write(90);
       }
@@ -119,7 +118,7 @@ void kasihPakan()
       ledcWrite(Channel_14,kecepatan3);    
       ledcWrite(Channel_15,0);
       for (int i = 0;i<1;i++){
-        myservo.write(65);
+        myservo.write(55);
         delay(lamaPakan3);
         myservo.write(90);
       }
@@ -139,7 +138,7 @@ void kasihPakan()
       ledcWrite(Channel_14,kecepatan4);    
       ledcWrite(Channel_15,0);
       for (int i = 0;i<1;i++){
-        myservo.write(65);
+        myservo.write(55);
         delay(lamaPakan4);
         myservo.write(90);
       }
