@@ -50,7 +50,6 @@ int lcdColumns = 16;
 int lcdRows = 2;
 
 
-
 long duration;
 float distanceCm;
 
@@ -75,6 +74,9 @@ const int  res = 8;//  Set up PWM Resolution
 Servo myservo;
 
 //variable untuk motor dan servo
+
+float gramPakan;
+
 int pos =0;
 // Varialble Untuk yang 1
 int jam1 ;
@@ -107,8 +109,8 @@ unsigned long startMillis;
 bool isFeeding = false;
 
 //Wifi
-const char* ssid       = "Ghazi";
-const char* password   = "Sarimiisi8";
+const char* ssid       = "punyasiapayaa";
+const char* password   = "apaajaboleh";
 
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 21600;
@@ -124,7 +126,7 @@ void printLocalTime()
 }
 
 //Kondisi Pakan
-String pakan;
+int pakan;
 unsigned long lastTime = 0;
 unsigned long timerDelay = 20000;
 
@@ -184,13 +186,13 @@ void setup()
 }
 void loop()
 {
+  kondisiPakan();
   if(WiFi.status() != WL_CONNECTED) {
     Serial.println("WiFi not connected");
     Serial.printf("Connecting to %s ", ssid);
     WiFi.begin(ssid, password);
     Serial.println(" CONNECTED"); 
   }
-  kondisiPakan();
   sensorSuhu();
   sensorPH();
   // Fuzzy Logic

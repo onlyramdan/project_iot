@@ -12,27 +12,38 @@ void kondisiPakan()
     distanceCm = (duration / 2) / 27.6;
 
     lcd.setCursor(0, 0);
-    sprintf(buffer, "Jarak : "); 
+    sprintf(buffer, "Pakan:"); 
     lcd.print(buffer);
-    String distanceStr = String(distanceCm, 2);
-    sprintf(buffer, "%s", distanceStr.c_str()); 
+//    String distanceStr = String(distanceCm, 2);
+//    sprintf(buffer, "%s", distanceStr.c_str()); 
+    pakan = ((1 - distanceCm/20)*100);
+    String pakanStr = String(pakan);
+    sprintf(buffer, "%s", pakanStr.c_str());     
     lcd.setCursor(7, 0);
-    
-    lcd.print(distanceCm);
+    lcd.print(pakan);
 
-    if (distanceCm > 5)
+    lcd.setCursor(10, 0);
+    lcd.print("%");
+
+    Serial.print("Pakan :");
+    Serial.print(pakan);
+    Serial.println("%");
+    if (pakan > 75)
     {
-        pakan = "Hampir Habis";
-        lcd.setCursor(0, 1);
-        sprintf(buffer, "%s", pakan.c_str());     
-        lcd.print(buffer); 
-    }
-    else
-    {
-       pakan = "Aman";
        lcd.setCursor(0, 1);
-       sprintf(buffer, "%s", pakan.c_str()); 
+       sprintf(buffer,"Aman"); 
        lcd.print(buffer); 
-       
+    }
+    else if (pakan > 25 && pakan < 75)
+    {
+       lcd.setCursor(0, 1);
+       sprintf(buffer,"Sedang"); 
+       lcd.print(buffer); 
+    }
+    else 
+    {
+      lcd.setCursor(0, 1);
+      sprintf(buffer,"Hampir Habis"); 
+      lcd.print(buffer);
     }
 }
