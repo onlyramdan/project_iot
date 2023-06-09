@@ -3,7 +3,7 @@ void Post_monitoring(){
     // cek WiFi connection status
     if(WiFi.status()== WL_CONNECTED){
       Serial.println("========== POST MONITORING ==========");
-      const char* serverName = "http://192.168.104.125/lelecuy/apiMonitoring.php";
+      const char* serverName = "http://192.168.137.186/lelecuy/apiMonitoring.php";
       WiFiClient client;
       HTTPClient http;  
       //memulai HTTP

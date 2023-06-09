@@ -1,7 +1,7 @@
 void kasihPakan()
 {
   Serial.println("========== RESPONSE GET ==========");
-  String url = "http://192.168.104.125/lelecuy/apiKasihPakan.php";
+  String url = "http://afeesh.my.id/api/api.php";
   HTTPClient http;
   int httpCode;
   String response;
@@ -11,18 +11,18 @@ void kasihPakan()
   response = http.getString();
   delay(5000);
   Serial.print("Response GET :");
+  Serial.println("JSON :");
   Serial.println(response);
   DynamicJsonDocument doc(1024);
   deserializeJson(doc, response);
   deserializeJson(doc,response);
   // #1
   JsonObject obj1 = doc["data"][0];
-  Serial.println("JSON :");
-  Serial.println(obj1);
+  
  
   jam1 = obj1["jam"];
   menit1 = obj1["menit"];
-  lamaPakan1 = obj1["lamaPakan"];
+  lamaPakan1 = obj1["bobotPakan"];
   kecepatan1 = obj1["kecepatan"];
   
   //lamaPakan1 = (gramPakan/0.8)*1000;
@@ -32,7 +32,7 @@ void kasihPakan()
  
   jam2 = obj2["jam"];
   menit2 = obj2["menit"];
-  lamaPakan2 = obj2["lamaPakan"];
+  lamaPakan2 = obj2["bobotPakan"];
   kecepatan2 = obj2["kecepatan"];
 
   //lamaPakan1 = (gramPakan/0.8)*1000;
@@ -42,7 +42,7 @@ void kasihPakan()
  
   jam3 = obj3["jam"];
   menit3 = obj3["menit"];
-  lamaPakan3 = obj3["lamaPakan"];
+  lamaPakan3 = obj3["bobotPakan"];
   kecepatan3 = obj3["kecepatan"];
   
   //lamaPakan1 = (gramPakan/0.8)*1000;
@@ -52,7 +52,7 @@ void kasihPakan()
  
   jam4 = obj4["jam"];
   menit4 = obj4["menit"];
-  lamaPakan4 = obj4["lamaPakan"];
+  lamaPakan4 = obj4["bobotPakan"];
   kecepatan4 = obj4["kecepatan"];
 
   //lamaPakan1 = (gramPakan/0.8)*1000;
@@ -77,10 +77,11 @@ void kasihPakan()
       //Motor DC nyala
       ledcWrite(Channel_14,kecepatan1);    
       ledcWrite(Channel_15,0);
-      for (int i = 0;i<1;i++){
-        myservo.write(55);
-        delay(lamaPakan1);
+      for (int i = 0; i<(lamaPakan1/500) ;i++){
+        myservo.write(56);
+        delay(500);
         myservo.write(90);
+        delay(500);
       }
       delay(lamaPakan1 + 5000);
       ledcWrite(Channel_14,0);    
@@ -97,10 +98,11 @@ void kasihPakan()
       //Motor DC nyala
       ledcWrite(Channel_14,kecepatan2);    
       ledcWrite(Channel_15,0);
-      for (int i = 0;i<1;i++){
-        myservo.write(55);
-        delay(lamaPakan2);
+       for (int i = 0; i<(lamaPakan2/500) ;i++){
+        myservo.write(56);
+        delay(500);
         myservo.write(90);
+        delay(500);
       }
       delay(lamaPakan2 + 5000);
       ledcWrite(Channel_14,0);    
@@ -117,10 +119,11 @@ void kasihPakan()
       //Motor DC nyala
       ledcWrite(Channel_14,kecepatan3);    
       ledcWrite(Channel_15,0);
-      for (int i = 0;i<1;i++){
-        myservo.write(55);
-        delay(lamaPakan3);
+      for (int i = 0; i<(lamaPakan3/500); i++){
+        myservo.write(56);
+        delay(500);
         myservo.write(90);
+        delay(500);
       }
       delay(lamaPakan3 + 5000);
       ledcWrite(Channel_14,0);    
@@ -137,10 +140,11 @@ void kasihPakan()
       //Motor DC nyala
       ledcWrite(Channel_14,kecepatan4);    
       ledcWrite(Channel_15,0);
-      for (int i = 0;i<1;i++){
-        myservo.write(55);
-        delay(lamaPakan4);
+      for (int i = 0; i<(lamaPakan4/500);  i++){
+        myservo.write(56);
+        delay(500);
         myservo.write(90);
+        delay(500);
       }
       delay(lamaPakan4 + 5000);
       ledcWrite(Channel_14,0);    

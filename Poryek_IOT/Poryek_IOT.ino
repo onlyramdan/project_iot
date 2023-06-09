@@ -200,7 +200,7 @@ void loop()
     kondisiAir = true;
     }
     
-  Post_monitoring();
+//  Post_monitoring();
   kasihPakan();
   lcd.clear();
 }
