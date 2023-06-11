@@ -78,7 +78,7 @@ void kasihPakan()
       ledcWrite(Channel_14,kecepatan1);    
       ledcWrite(Channel_15,0);
       for (int i = 0; i<(lamaPakan1/500) ;i++){
-        myservo.write(56);
+        myservo.write(60);
         delay(500);
         myservo.write(90);
         delay(500);
@@ -99,7 +99,7 @@ void kasihPakan()
       ledcWrite(Channel_14,kecepatan2);    
       ledcWrite(Channel_15,0);
        for (int i = 0; i<(lamaPakan2/500) ;i++){
-        myservo.write(56);
+        myservo.write(60);
         delay(500);
         myservo.write(90);
         delay(500);
@@ -120,7 +120,7 @@ void kasihPakan()
       ledcWrite(Channel_14,kecepatan3);    
       ledcWrite(Channel_15,0);
       for (int i = 0; i<(lamaPakan3/500); i++){
-        myservo.write(56);
+        myservo.write(60);
         delay(500);
         myservo.write(90);
         delay(500);
@@ -141,7 +141,7 @@ void kasihPakan()
       ledcWrite(Channel_14,kecepatan4);    
       ledcWrite(Channel_15,0);
       for (int i = 0; i<(lamaPakan4/500);  i++){
-        myservo.write(56);
+        myservo.write(60);
         delay(500);
         myservo.write(90);
         delay(500);

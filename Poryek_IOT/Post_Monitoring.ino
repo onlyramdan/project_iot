@@ -3,7 +3,7 @@ void Post_monitoring(){
     // cek WiFi connection status
     if(WiFi.status()== WL_CONNECTED){
       Serial.println("========== POST MONITORING ==========");
-      const char* serverName = "http://192.168.137.186/lelecuy/apiMonitoring.php";
+      const char* serverName ="http://afeesh.my.id/api/api-post.php";
       WiFiClient client;
       HTTPClient http;  
       //memulai HTTP
@@ -11,7 +11,7 @@ void Post_monitoring(){
       http.addHeader("Content-Type", "application/x-www-form-urlencoded");
       // Data to send with HTTP POST
       // Mengirim HTTP POST Data     
-      String httpRequestData = "pakan= "+ String(pakan) + "&suhu="+ String(suhu)+ "&ph="+ String(ph);           
+      String httpRequestData = "beratPakan="+ String(pakan) + "&suhu="+ String(suhu)+ "&ph="+ String(ph);           
       // Send HTTP POST request
       int httpResponseCode = http.POST(httpRequestData);
       

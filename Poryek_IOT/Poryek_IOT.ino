@@ -109,8 +109,8 @@ unsigned long startMillis;
 bool isFeeding = false;
 
 //Wifi
-const char* ssid       = "punyasiapayaa";
-const char* password   = "apaajaboleh";
+const char* ssid       = "aFEESH";
+const char* password   = "tekom9iot";
 
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 21600;
@@ -200,7 +200,7 @@ void loop()
     kondisiAir = true;
     }
     
-//  Post_monitoring();
+  Post_monitoring();
   kasihPakan();
   lcd.clear();
 }
