@@ -2,6 +2,9 @@
 
 Project ini membuat sebuah pakan otomatis dengan menggunnakka AI serta berbasi Web dimana pakan akan keluar otomatis ketika pakan waktunya sudah tepat sama seperti yang di setting di web
 
+## Gambar
+![image](https://github.com/onlyramdan/project_iot/assets/77191112/2805051f-63d5-48c2-8ce8-161244379313)
+
 ## Features
 Memberikan pakan secara otomatis ketika waktu yang sudah ditentukan di web
 * Pakan akan tidak akan keluar jika suhu dan ph tidak norma untuk ikan makan
