@@ -76,7 +76,13 @@ Proyek_iot
 
 ```
 ## Instalation
-
+   
+   * Sambungkan port usb kedalam laptop dan ESP32
+   * Upload file yang berada pada arduino IDE
+   * Jangan lupa untuk mengisi SSID dan Password wifi pada program ESP32
+   * Setelah upload tunggu hingga terkoneksi dengan wifi
+   * setting waktu pemberian pakan pada website
+   
 ## Credits
 *[Ramdan](https://www.linkedin.com/in/onlyramdan/)
 
