@@ -75,42 +75,43 @@ Servo myservo;
 
 //variable untuk motor dan servo
 
-float gramPakan;
-
 int pos =0;
 // Varialble Untuk yang 1
 int jam1 ;
 int menit1;
 int lamaPakan1;
 int kecepatan1;
-int waktuPakan1; 
+int waktuPakan1;
+float gramPakan1;
 // Varialble Untuk yang 2
 int jam2;
 int menit2;
 int lamaPakan2;
 int kecepatan2;
 int waktuPakan2; 
+float gramPakan2;
 // Varialble Untuk yang 3
 int jam3;
 int menit3;
 int lamaPakan3;
 int kecepatan3;
 int waktuPakan3; 
+float gramPakan3;
 // Varialble Untuk yang 4
 int jam4 ;
 int menit4;
 int lamaPakan4;
 int kecepatan4;
 int waktuPakan4; 
-
+float gramPakan4;
 //Varible Waktu dan kondisi kasih pakan
 unsigned long startMillis;
 
 bool isFeeding = false;
 
 //Wifi
-const char* ssid       = "aFEESH";
-const char* password   = "tekom9iot";
+const char* ssid       = "punyasiapayaa";
+const char* password   = "apaajaboleh";
 
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 21600;
@@ -170,6 +171,10 @@ void setup()
   while (WiFi.status() != WL_CONNECTED) {
       delay(500);
       Serial.print(".");
+      lcd.setCursor(0, 0);
+      lcd.print("Connecting To");
+      lcd.setCursor(0, 1);
+      lcd.print("Wi-Fi");
   }
   Serial.println(" CONNECTED");
   Serial.println(WiFi.localIP());
@@ -195,7 +200,6 @@ void loop()
   }
   sensorSuhu();
   sensorPH();
-  // Fuzzy Logic
   if(isgoodPh && isgoodSuhu){
     kondisiAir = true;
     }
